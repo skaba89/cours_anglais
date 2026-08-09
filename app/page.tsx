@@ -444,7 +444,6 @@ export default function Home() {
   const averageSpeechScore = attempts.length ? Math.round(attempts.reduce((sum, item) => sum + item.score, 0) / attempts.length) : 0;
   const listeningScore = Math.round((episodeWins.length / episodes.length) * 100);
   const productionScore = Math.min(100, completed.length * 4);
-  const totalSessions = levels.reduce((sum, item) => sum + item.modules.reduce((levelSum, module) => levelSum + module.sessions, 0), 0);
   const certificationScore = Math.round((averageSpeechScore + listeningScore + productionScore + 60) / 4);
   const moduleDetail = selectedModule ? levels.find((item) => item.code === selectedModule.level)?.modules[selectedModule.index] : null;
   const lessonContext = lessonContexts[levelCode];
@@ -697,7 +696,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="brand-proofbar"><div><strong>389</strong><span>séances guidées</span></div><div><strong>A1 → C2</strong><span>parcours complet</span></div><div><strong>15 min</strong><span>par jour</span></div><div><strong>6</strong><span>niveaux certifiants</span></div></section>
+      <section className="brand-proofbar"><div><strong>24</strong><span>expressions disponibles</span></div><div><strong>UK + US</strong><span>deux accents natifs</span></div><div><strong>15 min</strong><span>par jour</span></div><div><strong>6</strong><span>épisodes interactifs</span></div></section>
       <div className="brand-marquee" aria-hidden="true"><span>LISTEN</span><i>●</i><span>SPEAK</span><i>●</i><span>CORRECT</span><i>●</i><span>REMEMBER</span><i>●</i><span>HELLO!</span></div>
 
       <section className="problem-section">
@@ -723,7 +722,7 @@ export default function Home() {
       </section>
 
       <section className="curriculum-section" id="programme">
-        <div className="section-brand-heading"><div><p className="eyebrow">UN PARCOURS, PAS UN CATALOGUE</p><h2>De vos premiers mots<br />à votre voix personnelle.</h2></div><p>36 modules et 389 séances organisés selon le CECRL. Chaque niveau se termine par une preuve orale.</p></div>
+        <div className="section-brand-heading"><div><p className="eyebrow">UN PARCOURS, PAS UN CATALOGUE</p><h2>De vos premiers mots<br />à votre voix personnelle.</h2></div><p>Une feuille de route de 36 modules du niveau A1 au C2. La bêta fondatrice ouvre aujourd’hui 24 expressions guidées et s’enrichit progressivement.</p></div>
         <div className="brand-levels">{levels.map((item,index) => <article key={item.code} style={{ "--brand-level": item.color } as React.CSSProperties}><span>{item.code}</span><small>ÉTAPE {index + 1}</small><h3>{item.name}</h3><p>{item.promise}</p><b>{item.modules.reduce((sum,module) => sum + module.sessions,0)} séances</b></article>)}</div>
       </section>
 
@@ -731,8 +730,8 @@ export default function Home() {
 
       <section className="pricing-brand-section" id="offres">
         <p className="eyebrow">COMMENCEZ SANS RISQUE</p><h2>Moins qu’un café par semaine.<br />Plus de phrases chaque jour.</h2>
-        <div className="landing-prices"><article><span>DÉCOUVERTE</span><h3>Gratuit</h3><strong>0 €</strong><p>Pour découvrir la méthode.</p><ul><li>Diagnostic CECRL</li><li>Mission quotidienne</li><li>Premier épisode</li></ul><button onClick={() => setLandingOpen(false)}>Commencer</button></article><article className="price-premium"><span>PREMIUM · RECOMMANDÉ</span><h3>Parcours complet</h3><strong>79 €<small>/an</small></strong><p>Soit 6,58 € par mois.</p><ul><li>389 séances A1–C2</li><li>Coach vocal illimité</li><li>Mini-série complète</li><li>Révisions et certificats</li><li>Progression synchronisée</li></ul><button onClick={() => { setLandingOpen(false); setCommercialOpen(true); }}>Essayer 7 jours</button></article></div>
-        <div className="landing-guarantees"><span>✓ Aucun paiement aujourd'hui</span><span>✓ Annulation en un clic</span><span>✓ Données exportables</span></div>
+        <div className="landing-prices"><article><span>DÉCOUVERTE</span><h3>Gratuit</h3><strong>0 €</strong><p>Pour tester la méthode sans engagement.</p><ul><li>Diagnostic indicatif</li><li>24 expressions guidées</li><li>Accents britannique et américain</li><li>6 épisodes et quiz</li></ul><button onClick={() => setLandingOpen(false)}>Commencer</button></article><article className="price-premium"><span>BÊTA FONDATRICE</span><h3>Accès prioritaire</h3><strong>0 €<small> aujourd’hui</small></strong><p>Participez avant l’ouverture de l’offre payante.</p><ul><li>Tout l’accès Découverte</li><li>Progression synchronisée</li><li>Nouveaux modules en avant-première</li><li>Tarif Fondateur annoncé avant achat</li></ul><button onClick={() => { setLandingOpen(false); setCommercialOpen(true); }}>Rejoindre la bêta</button></article></div>
+        <div className="landing-guarantees"><span>✓ Aucun paiement aujourd’hui</span><span>✓ Promesses transparentes</span><span>✓ Progression exportable</span></div>
       </section>
 
       <section className="landing-faq"><p className="eyebrow">QUESTIONS FRÉQUENTES</p><h2>Avant de commencer.</h2>{[
@@ -743,7 +742,7 @@ export default function Home() {
       ].map(([question,answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</section>
 
       <section className="closing-brand"><span className="closing-mark">H</span><p className="eyebrow">YOUR VOICE. YOUR ENGLISH.</p><h2>Le meilleur moment pour parler anglais,<br />c’était hier. Le deuxième, c’est maintenant.</h2><button onClick={() => setLandingOpen(false)}>Commencer gratuitement <span>→</span></button></section>
-      <footer className="landing-footer"><div><strong>Hello!</strong><small>English, spoken.</small></div><p>Une méthode d’anglais pensée pour les francophones.</p><nav><a href="/account">Mon compte</a><a href="#offres">Tarifs</a><a href="#methode">Méthode</a></nav><span>© 2026 Hello!</span></footer>
+      <footer className="landing-footer"><div><strong>Hello!</strong><small>English, spoken.</small></div><p>Une méthode d’anglais pensée pour les francophones.</p><nav><a href="/account">Compte</a><a href="/confidentialite">Confidentialité</a><a href="/conditions">Conditions</a><a href="/assistance">Assistance</a></nav><span>© 2026 Hello!</span></footer>
     </main>
   );
 
@@ -792,15 +791,15 @@ export default function Home() {
           </div>
 
           <article className="academy-proof">
-            <div><strong>{totalSessions}</strong><span>séances guidées</span></div>
+            <div><strong>24</strong><span>expressions disponibles</span></div>
             <div><strong>36</strong><span>modules CECRL</span></div>
-            <div><strong>6</strong><span>niveaux certifiants</span></div>
+            <div><strong>6</strong><span>niveaux dans la feuille de route</span></div>
           </article>
 
           <button className="premium-teaser" onClick={() => setCommercialOpen(true)}>
             <span className="premium-monogram">H+</span>
-            <span><small>HELLO! PREMIUM</small><strong>Tout le parcours, sans limite.</strong><em>7 jours d'essai · puis 6,58 €/mois avec l'offre annuelle</em></span>
-            <b>Découvrir →</b>
+            <span><small>BÊTA FONDATRICE</small><strong>Construisez la suite avec nous.</strong><em>Accès prioritaire · aucun paiement aujourd’hui</em></span>
+            <b>Participer →</b>
           </button>
 
           <article className="adaptive-queue">
@@ -1081,7 +1080,7 @@ export default function Home() {
           {attempts.length > 0 && <article className="attempt-history"><p className="eyebrow">DERNIERS ESSAIS</p><div>{attempts.slice(0, 5).map((attempt) => <span key={attempt.id} title={attempt.phrase}><i style={{ height: `${Math.max(18, attempt.score)}%` }} /><b>{attempt.score}</b></span>)}</div><small>Votre historique reste enregistré uniquement sur cet appareil.</small></article>}
           <article className={`certificate-card ${certificationScore >= 80 ? "ready" : ""}`}>
             <span className="certificate-mark">H</span>
-            <div><p className="eyebrow">VALIDATION {levelCode}</p><h2>{certificationScore >= 80 ? "Niveau prêt à certifier" : `${80 - certificationScore} points avant validation`}</h2><p>Critères : compréhension, production, intelligibilité et régularité. Chaque preuve doit atteindre 80 %.</p></div>
+            <div><p className="eyebrow">BILAN INTERNE {levelCode}</p><h2>{certificationScore >= 80 ? "Objectif de niveau atteint" : `${80 - certificationScore} points avant validation`}</h2><p>Indicateurs pédagogiques internes : compréhension, production, intelligibilité et régularité. Ce bilan n’est pas une certification officielle.</p></div>
             <strong>{certificationScore}%</strong>
           </article>
           <article className="account-sync">
@@ -1114,19 +1113,18 @@ export default function Home() {
         <div className="modal-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setCommercialOpen(false)}>
           <section className="commercial-modal" role="dialog" aria-modal="true" aria-labelledby="commercial-title">
             <button className="modal-close" onClick={() => setCommercialOpen(false)} aria-label="Fermer">×</button>
-            <p className="eyebrow">HELLO! PREMIUM</p>
-            <h2 id="commercial-title">Parler anglais devient votre nouvelle habitude.</h2>
-            <p className="commercial-lead">Une méthode complète pour francophones, avec un objectif clair chaque jour et des preuves concrètes de progression.</p>
-            <div className="billing-switch"><button className={billingCycle === "monthly" ? "active" : ""} onClick={() => setBillingCycle("monthly")}>Mensuel</button><button className={billingCycle === "yearly" ? "active" : ""} onClick={() => setBillingCycle("yearly")}>Annuel <span>−34 %</span></button></div>
+            <p className="eyebrow">BÊTA FONDATRICE</p>
+            <h2 id="commercial-title">Aidez-nous à construire le meilleur coach pour francophones.</h2>
+            <p className="commercial-lead">Réservez votre accès prioritaire. Vous découvrirez le prix et les conditions avant tout achat : aucun paiement n’est actif aujourd’hui.</p>
             <div className="price-grid">
               <article><p className="eyebrow">DÉCOUVERTE</p><h3>Gratuit</h3><strong>0 €</strong><ul><li>Diagnostic CECRL</li><li>1 mission quotidienne</li><li>Épisode 1 de la mini-série</li><li>Progression locale</li></ul><button className="secondary" onClick={() => { setSelectedPlan("free"); setCommercialOpen(false); }}>Continuer gratuitement</button></article>
-              <article className="recommended"><span className="best-choice">MEILLEUR CHOIX</span><p className="eyebrow">PREMIUM</p><h3>Parcours complet</h3><strong>{billingCycle === "yearly" ? "79 €" : "9,90 €"}<small>/{billingCycle === "yearly" ? "an" : "mois"}</small></strong><ul><li>389 séances A1–C2</li><li>Coach vocal francophone illimité</li><li>Mini-série et quiz complets</li><li>Révisions adaptatives</li><li>Synchronisation et certificats</li></ul><button className="primary" onClick={requestPremium}>Réserver mon essai de 7 jours</button></article>
+              <article className="recommended"><span className="best-choice">ACCÈS PRIORITAIRE</span><p className="eyebrow">FONDATEUR</p><h3>Co-construire Hello!</h3><strong>0 €<small> aujourd’hui</small></strong><ul><li>24 expressions et 6 épisodes disponibles</li><li>Accents britannique et américain</li><li>Progression synchronisée</li><li>Nouveaux modules en avant-première</li><li>Tarif Fondateur annoncé avant achat</li></ul><button className="primary" onClick={requestPremium}>Rejoindre la bêta fondatrice</button></article>
             </div>
             {commercialMessage && <p className="commercial-message">✓ {commercialMessage}</p>}
-            <div className="checkout-trust"><span>Annulation en un clic</span><span>Aucun prélèvement aujourd'hui</span><span>Données exportables</span></div>
-            <details><summary>Que se passe-t-il après l'essai ?</summary><p>Le paiement ne sera activé qu'après connexion du prestataire marchand. Avant cela, votre réservation Premium ne déclenche aucun débit.</p></details>
+            <div className="checkout-trust"><span>Aucun prélèvement</span><span>Information avant paiement</span><span>Données exportables</span></div>
+            <details><summary>Que se passe-t-il après l’inscription ?</summary><p>Votre intérêt est enregistré. Vous serez informé de l’ouverture commerciale, du prix et des conditions avant de décider de souscrire.</p></details>
             <details><summary>Puis-je apprendre à mon rythme ?</summary><p>Oui. Le plan s'ajuste à 10, 15 ou 25 minutes par jour et reprogramme automatiquement les notions fragiles.</p></details>
-            <footer><button onClick={() => setCommercialMessage("Conditions : essai sans prélèvement tant que le paiement marchand n'est pas activé. Résiliation libre. Droit d'accès et d'export des données.")}>Conditions</button><button onClick={() => setCommercialMessage("Confidentialité : la progression est liée au compte connecté, utilisée uniquement pour personnaliser l'apprentissage et exportable à tout moment.")}>Confidentialité</button><button onClick={() => setCommercialMessage("Support : une assistance et une adresse de contact officielle seront affichées avant l'ouverture des paiements.")}>Assistance</button></footer>
+            <footer><a href="/conditions">Conditions</a><a href="/confidentialite">Confidentialité</a><a href="/assistance">Assistance</a></footer>
           </section>
         </div>
       )}
