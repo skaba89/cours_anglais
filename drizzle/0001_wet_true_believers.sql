@@ -1,0 +1,1 @@
+CREATE INDEX `idx_commercial_interests_user_id` ON `commercial_interests` (`user_id`);
